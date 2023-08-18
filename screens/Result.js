@@ -54,7 +54,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
       setLoading(false);
     }
   };
-  console.log(imageUri);
+  // console.log("imageUri", imageUri);
   return (
     <>
       <View
@@ -76,7 +76,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
         >
           {option}
         </Text>
-        {capturedImage && (
+        {imageUri && (
           <View
             style={{
               width: 420,

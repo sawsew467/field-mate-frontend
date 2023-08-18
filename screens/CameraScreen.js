@@ -49,51 +49,55 @@ export default function CameraStack() {
   );
 }
 
-export function CameraScreen({ setCapturedImage, setAnalysisResult,setImageUri }) {
+export function CameraScreen({
+  setCapturedImage,
+  setAnalysisResult,
+  setImageUri,
+}) {
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
   const cameraRef = useRef(null);
 
   const takePhoto = async () => {
-    let data = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 0.5,
-    });
-    setImageUri(data.uri);
-
-    if (!data.cancelled) {
-      const newfile = {
-        uri: data.assets[0].uri,
-        type: `test/${data.assets[0].uri.split(".")[1]}`,
-        name: `test.${data.assets[0].uri.split(".")[1]}`,
-      };
-      handleUpload(newfile);
-    } else {
-      console.log("You need to give camera permission for this to work.");
+    try {
+      setLoading(true);
+      let data = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.5,
+      });
+      const res = await getAIResult(data);
+      setImageUri(data.uri);
+      setCapturedImage(data.url);
+      setAnalysisResult(res);
+      navigation.navigate("Kết quả");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const pickPhoto = async () => {
-    let data = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 0.5,
-    });
-    setImageUri(data.uri);
-
-    if (!data.canceled) {
-      const newfile = {
-        uri: data.assets[0].uri,
-        type: `test/${data.assets[0].uri.split(".")[1]}`,
-        name: `test.${data.assets[0].uri.split(".")[1]}`,
-      };
-      handleUpload(newfile);
-    } else {
-      console.log("You need to give camera permission for this to work.");
+    try {
+      setLoading(true);
+      let data = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.5,
+      });
+      const res = await getAIResult(data);
+      setImageUri(data.uri);
+      setCapturedImage(data.url);
+      setAnalysisResult(res);
+      navigation.navigate("Kết quả");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
