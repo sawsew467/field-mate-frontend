@@ -20,6 +20,7 @@ const RecentAlbum = ({ imageData }) => {
         <Text
           style={{
             fontSize: 16,
+            fontWeight: "600",
           }}
         >
           Gần đây
@@ -27,7 +28,6 @@ const RecentAlbum = ({ imageData }) => {
         <Text
           style={{
             fontSize: 14,
-            opacity: 0.4,
           }}
         >
           Xem thêm

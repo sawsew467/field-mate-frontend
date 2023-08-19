@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Result from "./Result";
 import * as ImagePicker from "expo-image-picker";
 import { getAIResult } from "../apis";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,7 @@ export default function CameraStack() {
       ></Stack.Screen>
       <Stack.Screen
         name="Kết quả"
+        options={{ headerShown: false }}
         component={() => (
           <Result
             capturedImage={capturedImage}
@@ -57,7 +59,7 @@ export function CameraScreen({
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
-  const cameraRef = useRef(null);
+  // const cameraRef = useRef(null);
 
   const takePhoto = async () => {
     try {
@@ -68,6 +70,10 @@ export function CameraScreen({
         aspect: [1, 1],
         quality: 0.5,
       });
+      if (data.uri === undefined) {
+        setLoading(false);
+        return
+      }
       const res = await getAIResult(data);
       setImageUri(data.uri);
       setCapturedImage(data.url);
@@ -89,6 +95,10 @@ export function CameraScreen({
         aspect: [1, 1],
         quality: 0.5,
       });
+      if (data.uri === undefined) {
+        setLoading(false);
+        return
+      }
       const res = await getAIResult(data);
       setImageUri(data.uri);
       setCapturedImage(data.url);
@@ -130,14 +140,52 @@ export function CameraScreen({
   };
   return (
     <View style={styles.screenContainer}>
-      <Camera style={styles.camera} ref={cameraRef} />
+      {/* <Camera style={styles.camera} ref={cameraRef} /> */}
       <TouchableOpacity style={styles.captureButton2} onPress={pickPhoto}>
-        <Text>Chọn ảnh từ thiết bị</Text>
+        <Image
+          source={require("../assets/icons/folder-outline.png")}
+          resizeMode="contain"
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 140,
+            tintColor: "#fff",
+          }}
+        ></Image>
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: 500,
+            marginTop: 6,
+            color: "#fff",
+          }}
+        >
+          Chọn ảnh từ thiết bị
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.captureButton1} onPress={takePhoto}>
-        <Text>Chụp ảnh bằng camera</Text>
+        <Image
+          source={require("../assets/icons/camera-foto-outline.png")}
+          resizeMode="contain"
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 140,
+            tintColor: "#4eae5a"
+          }}
+        ></Image>
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: 500,
+            marginTop: 6,
+            color: "#4eae5a"
+          }}
+        >
+          Chụp ảnh bằng camera
+        </Text>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.closeButton}
         onPress={() => navigation.navigate("Thư viện")}
       >
@@ -145,13 +193,24 @@ export function CameraScreen({
           source={require("../assets/icons/close.png")}
           style={styles.closeIcon}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       {loading && (
         <View style={styles.loadingOverlay}>
-          <ActivityIndicator size="large" color="#6DB557" />
+          <ActivityIndicator size="large" color="#4eae5a" />
         </View>
       )}
     </View>
+    // <View>
+    //   <Text style={
+    //     {
+    //       fontSize: 16,
+    //       textAlign: "center",
+
+    //     }
+    //   }>
+    //     Chọn ảnh muốn phân loại
+    //   </Text>
+    // </View>
   );
 }
 
@@ -167,21 +226,29 @@ const styles = StyleSheet.create({
   },
   captureButton1: {
     position: "absolute",
-    bottom: 320,
+    bottom: 290,
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    width: 300,
-    height: 64,
-    backgroundColor: "#6DB557",
+    width: 250,
+    paddingTop: 10,
+    paddingBottom: 10,
+    // backgroundColor: "rgba(0, 0, 0, 0.29);",
+    borderWidth: 2,
+    borderColor: "#4eae5a",
   },
   captureButton2: {
     position: "absolute",
     bottom: 400,
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    width: 300,
-    height: 64,
-    backgroundColor: "#6DB557",
+    width: 250,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: "#4eae5a",
   },
   captureIcon: {
     width: 24,
@@ -189,7 +256,7 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: "absolute",
-    top: 20,
+    top: 40,
     left: 20,
     width: 30,
     height: 30,
@@ -197,6 +264,7 @@ const styles = StyleSheet.create({
   closeIcon: {
     width: "100%",
     height: "100%",
+    tintColor: "#4eae5a",
   },
   loadingOverlay: {
     ...StyleSheet.absoluteFillObject,

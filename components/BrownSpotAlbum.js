@@ -18,6 +18,7 @@ const BrownSpotAlbum = ({imageData}) => {
         <Text
           style={{
             fontSize: 16,
+            fontWeight: 600,
           }}
         >
           Brown Spot
@@ -25,7 +26,6 @@ const BrownSpotAlbum = ({imageData}) => {
         <Text
           style={{
             fontSize: 14,
-            opacity: 0.4,
           }}
         >
           Xem thêm

@@ -26,7 +26,7 @@ const CustomTabBarButton = ({ onPress }) => (
         width: 70,
         height: 70,
         borderRadius: 35,
-        backgroundColor: "#6DB557",
+        backgroundColor: "#4eae5a",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -55,12 +55,12 @@ const BottomTabNavigator = () => {
           headerShown: true,
           tabBarShowLabel: false,
           tabBarStyle: {
-            // position: "absolute",
-            // bottom: 25,
-            // left: 20,
-            // right: 20,
-            backgroundColor: "#ffffff",
-            // borderRadius: 15,
+            position: "absolute",
+            bottom: 25,
+            left: 20,
+            right: 20,
+            backgroundColor: "#fff",
+            borderRadius: 15,
             height: 90,
             ...styles.shadow,
             display: "flex",
@@ -79,13 +79,13 @@ const BottomTabNavigator = () => {
                   resizeMode="contain"
                   style={[
                     styles.tabIcon,
-                    { tintColor: focused ? "#6DB557" : "#748c94" },
+                    { tintColor: focused ? "#4eae5a" : "#748c94" },
                   ]}
                 />
                 <Text
                   style={[
                     styles.tabLabel,
-                    { color: focused ? "#6DB557" : "#748c94" },
+                    { color: focused ? "#4eae5a" : "#748c94" },
                   ]}
                 >
                   Thư viện
@@ -98,10 +98,10 @@ const BottomTabNavigator = () => {
           name="Máy ảnh"
           component={CameraScreen}
           options={{
-            headerShown: false,
-            tabBarStyle: {
-              display: "none",
-            },
+            // headerShown: false,
+            // tabBarStyle: {
+            //   display: "none",
+            // },
             tabBarIcon: () => (
               <Image
                 source={require("./assets/icons/camera.png")}
@@ -129,13 +129,13 @@ const BottomTabNavigator = () => {
                   resizeMode="contain"
                   style={[
                     styles.tabIcon,
-                    { tintColor: focused ? "#6DB557" : "#748c94" },
+                    { tintColor: focused ? "#4eae5a" : "#748c94" },
                   ]}
                 />
                 <Text
                   style={[
                     styles.tabLabel,
-                    { color: focused ? "#6DB557" : "#748c94" },
+                    { color: focused ? "#4eae5a" : "#748c94" },
                   ]}
                 >
                   Tài khoản

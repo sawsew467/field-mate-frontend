@@ -20,6 +20,7 @@ const HispaAlbum = ({imageData}) => {
         <Text
           style={{
             fontSize: 16,
+            fontWeight: 600,
           }}
         >
           Hispa
@@ -27,7 +28,6 @@ const HispaAlbum = ({imageData}) => {
         <Text
           style={{
             fontSize: 14,
-            opacity: 0.4,
           }}
         >
           Xem thêm

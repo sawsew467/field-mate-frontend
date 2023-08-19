@@ -24,9 +24,10 @@ const GalleryScreen = () => {
       <View
         style={{
           padding: 12,
-          backgroundColor: "#F0F9ED",
+          backgroundColor: "#fff",
           position: 'relative',
-          flex: 1
+          flex: 1,
+          paddingBottom: 130,
         }}
       >
         <RecentAlbum imageData={imageData}></RecentAlbum>

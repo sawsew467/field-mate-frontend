@@ -20,6 +20,7 @@ const HealthyAlbum = ({ imageData }) => {
         <Text
           style={{
             fontSize: 16,
+            fontWeight: 600,
           }}
         >
           Healthy
@@ -27,7 +28,6 @@ const HealthyAlbum = ({ imageData }) => {
         <Text
           style={{
             fontSize: 14,
-            opacity: 0.4,
           }}
         >
           Xem thêm

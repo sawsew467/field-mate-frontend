@@ -9,9 +9,10 @@ const AccountScreen = () => {
       <View
         style={{
           padding: 12,
-          backgroundColor: "#F0F9ED",
+          backgroundColor: "#fff",
           display: "flex",
           flexDirection: "column",
+          height: 678
         }}
       >
         <View
@@ -30,7 +31,7 @@ const AccountScreen = () => {
             }}
           ></View>
           <Image
-            source={require("../assets/leaf/image1.png")}
+            source={require("../assets/avatar.png")}
             resizeMode="contain"
             style={{
               width: 140,

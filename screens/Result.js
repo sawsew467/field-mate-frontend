@@ -62,7 +62,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          backgroundColor: "rgba(109, 181, 87, 0.47)",
+          // backgroundColor: "rgba(109, 181, 87, 0.47)",
           width: "100%",
         }}
       >
@@ -74,7 +74,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
             marginTop: 12,
           }}
         >
-          {option}
+          Kết quả: {option}
         </Text>
         {imageUri && (
           <View
@@ -109,7 +109,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
             />
           </View>
         )}
-        <View
+        {/* <View
           style={{
             display: "flex",
             flexDirection: "column",
@@ -130,7 +130,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
               <Text
                 style={{
                   ...styles.albumText,
-                  color: option === "Healthy" ? "#6DB557" : "#000",
+                  color: option === "Healthy" ? "#4eae5a" : "#000",
                   fontWeight: option === "Healthy" ? "bold" : "normal",
                 }}
               >
@@ -146,7 +146,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
               <Text
                 style={{
                   ...styles.albumText,
-                  color: option === "Brown Spot" ? "#6DB557" : "#000",
+                  color: option === "Brown Spot" ? "#4eae5a" : "#000",
                   fontWeight: option === "Brown Spot" ? "bold" : "normal",
                 }}
               >
@@ -169,7 +169,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
               <Text
                 style={{
                   ...styles.albumText,
-                  color: option === "Leaf Blast" ? "#6DB557" : "#000",
+                  color: option === "Leaf Blast" ? "#4eae5a" : "#000",
                   fontWeight: option === "Leaf Blast" ? "bold" : "normal",
                 }}
               >
@@ -185,7 +185,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
               <Text
                 style={{
                   ...styles.albumText,
-                  color: option === "Hispa" ? "#6DB557" : "#000",
+                  color: option === "Hispa" ? "#4eae5a" : "#000",
                   fontWeight: option === "Hispa" ? "bold" : "normal",
                 }}
               >
@@ -193,7 +193,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
               </Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </View> */}
         <View
           style={{
             display: "flex",
@@ -205,7 +205,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
               paddingTop: 24,
               paddingBottom: 24,
               width: "50%",
-              backgroundColor: "#224F9A",
+              backgroundColor: "#1A56DB",
             }}
             onPress={handleSaveImage}
           >
@@ -223,7 +223,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
               paddingTop: 24,
               paddingBottom: 24,
               width: "50%",
-              backgroundColor: "#E2783A",
+              backgroundColor: "#C81E1E",
             }}
             onPress={() => navigation.goBack()}
           >
@@ -239,7 +239,7 @@ function Result({ capturedImage, analysisResult, imageUri }) {
         </View>
         {loading && (
           <View style={styles.loadingOverlay}>
-            <ActivityIndicator size="large" color="#6DB557" />
+            <ActivityIndicator size="large" color="#4eae5a" />
           </View>
         )}
       </View>
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     paddingBottom: 22,
     paddingLeft: 22,
     paddingRight: 22,
-    borderColor: "#6DB557",
+    borderColor: "#4eae5a",
     backgroundColor: "#FFF",
   },
   albumText: {
